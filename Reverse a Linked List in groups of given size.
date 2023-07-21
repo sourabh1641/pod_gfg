@@ -1,0 +1,24 @@
+class Solution
+{
+    public static Node reverse(Node root, int k)
+    {
+        //Your code here
+        if(root==null)
+            return root;
+        int temp = k;
+        Node prev = null;
+        Node start = root;
+        Node cur = root;
+        
+        while(cur!=null&&k!=0){
+            k--;
+            Node next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+        }
+        
+        start.next = reverse(cur,temp);
+        return prev;
+    }
+}
